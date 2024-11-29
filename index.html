@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <script src="js/script.js" defer></script>
+    <title>VirtuBoddy</title>
+    
+</head>
+<body class="overflow-x-hidden">
+    <nav class="container relative mx-auto p-6">
+        <!-- Flex container for Nav Items -->
+        <div class="flex items-center justify-between space-between space-x-20 my-6">
+            <div class="z-30">
+                <img class="w-32" src="src/img/rmLogo.png" alt="" id="logo">
+            </div>
+
+            <!-- Nav Items -->
+            <div class="hidden items-center space-x-10 uppercase text-grayishBlue md:flex">
+                <a href="#features" class="tracking-widest hover:text-softRed">Features</a>
+                <a href="#download" class="tracking-widest hover:text-softRed">Download</a>
+                <a href="#faq" class="tracking-widest hover:text-softRed">FAQ</a>
+
+                <a href="#" class="px-8 py-2 text-white bg-softRed border-2 border-softRed rounded-lg shadow-lg hover:text-softRed hover:bg-white">Login</a>
+            </div>
+            <!-- Hamburger button -->
+            <button id="menu-btn" class="z-30 block md:hidden focus:outline hamburger">
+                <span class="hamburger-top"></span>
+                <span class="hamburger-middle"></span>
+                <span class="hamburger-bottom"></span>
+            </button>
+
+            
+        </div>
+        <!-- Mobile menu -->
+         <div id="menu" class="fixed inset-0 z-20 hidden flex flex-col items-center self-end w-full h-full m-h-screen px-6 py-1 pt-24 pb-4 tracking-widest text-white uppercase divide-y divide-gray-500 opacity-90 bg-veryDarkBlue">
+            
+            <div class="w-full mt-20 py-3 text-center">
+                <a href="#features" class="block hover:text-softRed">Features</a>
+            </div>
+
+            <div class="w-full py-3 text-center">
+                <a href="#download" class="block hover:text-softRed">Download</a>
+            </div>
+
+            <div class="w-full py-3 text-center">
+                <a href="#faq" class="block hover:text-softRed">FAQ</a>
+            </div>
+
+            <div class="w-full py-3 text-center">
+                <a href="#faq" class="block hover:text-softRed">Start</a>
+            </div>
+         </div>
+    </nav>
+
+    <section id="hero">
+        <!-- container for image & content -->
+        <div class="container flex flex-col-reverse mx-auto p-6 lg:flex-row lg:mb-0">
+            <!-- Image -->
+             <div class="flex flex-col space-y-10 lg:mt-16 lg:w-1/2">
+                <h1 class="text-3xl font-semibold text-center lg:text-6xl lg:text-left">
+                    VirtuBoddy your personal assistant.
+                </h1>
+                <p class="max-w-md mx-auto text-lg text-center text-gray-400 lg:text-2xl lg:text-left lg:mt-0 lg:mx-0">
+                    VirtuBoddy is a virtual assistant that helps you to keep track of your daily activities and also helps you to keep fit.
+                </p>
+                <!-- Buttons container -->
+                 <div class="flex items-center justify-center w-full space-x-4 lg:justify-start">
+                    <a href="#" class="p-4 text-sm font-semibold text-white bg-mainBlue rounded shadow-md border-2 border-mainBlue md:text-base hover:bg-white hover:text-mainBlue">Try it now</a>
+                 </div>
+             </div>
+             <!-- Image -->
+              <div class="relative mx-auto lg:mx-0 lg:mb-0 lg:w-1/2">
+                <div class="bg-hero"></div>
+                <img src="src/img/blue.png" alt="" class="relative z-10 lg:top-24 xl:top-0 overflow-x-visible">
+              </div>
+        </div>
+    </section>
+
+    <!-- Features Heading -->
+    <section id="features">
+        <div class="container-mx-auto mt-16 px-6">
+            <h2 class="mb-6 text-4xl font-semibold text-center">Features</h2>
+            <p class="max-w-md mx-auto text-center text-grayishBlue">
+                A clean and simple interface to keep track of your daily activities and also helps you to keep fit.
+            </p>
+        </div>
+    </section>
+
+    <!-- Features Tabs -->
+     <div id="tabs">
+        <!-- Tabs/panels containers -->
+         <div class="container relative mx-auto my-6 mb-32 mt-12 px-6">
+            <div class="bg-tabs"></div>
+            <!-- Tabs flex container -->
+             <div class="flex flex-col justify-center max-w-xl mx-auto mb-6 border-b md:space-x-10 md:flex-row">
+                <!-- Tab 1 -->
+                 <div class="flex justify-center text-center text-gray-600 border-b md:border-b-0 hover:text-softRed md:w-1/3 tab" data-target="panel-1">
+                    <div class="py-5 border-b-4 border-softRed" data-target="panel-1">
+                        Simple Interface
+                    </div>
+                 </div>
+
+                 <!-- Tab2 -->
+                 <div class="flex justify-center text-center text-gray-600 border-b md:border-b-0 hover:text-softRed md:w-1/3 tab" data-target="panel-2">
+                    <div class="py-5 " data-target="panel-2">
+                        Speedy Performance
+                    </div>
+                 </div>
+
+                    <!-- Tab3 -->
+                <div class="flex justify-center text-center text-gray-600 border-b md:border-b-0 hover:text-softRed md:w-1/3 tab" data-target="panel-3">
+                    <div class="py-5" data-target="panel-3">Easy to Use</div>
+                </div>
+             </div>
+         </div>
+         <!-- Tab Panels -->
+         <div id="panels" class="container mx-auto">
+            <!-- Panel 1 -->
+             <div class="flex flex-col py-5 md:flex-row md:space-x-7 panel panel-1">
+                <!-- Panel Image -->
+                 <div class="flex justify-center md:w-1/2">
+                    <img src="src/img/interface.jpg" alt="" class="relative z-10 rounded-xl">
+                 </div>
+                 <!-- Panel content -->
+                  <div class="flex flex-col space-y-8 md:w-1/2">
+                    <h3 class="mt-32 text-3xl font-semibold text-center md:mt-0 md:text-left">
+                        A quick shift from one activity to another.
+                    </h3>
+                    <p class="max-w-md text-center text-grayishBlue md:text-left">
+                        VirtuBoddy has a simple interface that allows you to easily switch from one activity to another.
+                        We achieve this by providing a clean and simple interface that is easy to use.
+
+                    </p>
+                    <div class="flex items-center justify-center w-full space-x-4 lg:justify-start mx-aut md:mx-0">
+                        <a href="#" class="px-6 py-3 mt-4 font-semibold text-white border-white bg-mainBlue rounded-lg shadow-md border-2 md:text-base hover:bg-white hover:text-mainBlue hover:border-mainBlue ">More info</a>
+                     </div>
+                </div>
+             </div>
+
+             <!-- Panel 2 -->
+             <div class="flex flex-col hidden py-5 md:flex-row md:space-x-7 panel panel-2">
+                <!-- Panel Image -->
+                 <div class="flex justify-center md:w-1/2">
+                    <img src="src/img/speedy.jpg" alt="" class="relative z-10 rounded-xl">
+                 </div>
+                 <!-- Panel content -->
+                  <div class="flex flex-col space-y-8 md:w-1/2">
+                    <h3 class="mt-14 text-3xl font-semibold text-center md:mt-0 md:text-left">
+                        Speedy Performance for all activities.
+                    </h3>
+                    <p class="max-w-md text-center text-grayishBlue md:text-left">
+                        VirtuBoddy is designed to be fast and efficient in all activities. We achieve this by providing a clean and simple interface that is easy to use.
+                    </p>
+                    <div class="flex items-center justify-center w-full space-x-4 lg:justify-start mx-aut md:mx-0">
+                        <a href="#" class="px-6 py-3 mt-4 font-semibold text-white border-white bg-mainBlue rounded-lg shadow-md border-2 md:text-base hover:bg-white hover:text-mainBlue hover:border-mainBlue ">More info</a>
+                     </div>
+                </div>
+             </div>
+
+             <!-- Panel 3 -->
+             <div class="flex flex-col hidden py-5 md:flex-row md:space-x-7 panel panel-3">
+                <!-- Panel Image -->
+                 <div class="flex justify-center md:w-1/2">
+                    <img src="src/img/SHARING.jpg" alt="" class="relative z-10 rounded-xl">
+                 </div>
+                 <!-- Panel content -->
+                  <div class="flex flex-col space-y-8 md:w-1/2">
+                    <h3 class="mt-14 text-3xl font-semibold text-center md:mt-0 md:text-left">
+                        Easy to Use in daily activities
+                    </h3>
+                    <p class="max-w-md text-center text-grayishBlue md:text-left">
+                        VirtuBoddy is designed to be easy to use in all daily activities. We achieve this by providing a clean and simple interface that is easy to use.
+                    </p>
+                    <div class="flex items-center justify-center w-full space-x-4 lg:justify-start mx-aut md:mx-0">
+                        <a href="#" class="px-6 py-3 mt-4 font-semibold text-white border-white bg-mainBlue rounded-lg shadow-md border-2 md:text-base hover:bg-white hover:text-mainBlue hover:border-mainBlue ">More info</a>
+                     </div>
+                </div>
+             </div>
+
+         </div>
+        </div>
+     </section>
+
+    <!-- Download Section -->
+    <section id="download">
+        <!-- Download heading -->
+        <div class="container mx-auto px-6">
+            <h2 class="mgb-6 text-3xl font-semibold text-center md:text-4xl">
+                Download VirtuBoddy extension
+            </h2>
+            <p class="max-w-lg mx-auto text-center text-grayishBlue">
+                VirtuBoddy is available for all browsers and devices. Download now and enjoy the experience.
+            </p>
+        </div>
+    </section>
+
+    <section id="download-boxes py-32">
+        <div class="container mx-auto px-6">
+            <div class="relative flex flex-col items-center max-w-5xl mx-auto space-y-10  md:px-6 md:space-y-0 md:space-x-7 md:flex-row">
+                <!--Box 1  -->
+                <div class="flex flex-col w-full mt-14 py-6 space-y-4 text-center rounded-xl shadow-2xl md:w-1/3">
+                    <!-- Image -->
+                     <div class="flex justify-center">
+                        <img src="src/img/google-chrome.png" alt="">
+                     </div>
+                     <!-- Text -->
+                      <h5 class="pt-6 text-xl font-bold">
+                        Add to Chrome
+                      </h5>
+                      <p class="text-gray-400">
+                        Minimum version 62
+                      </p>
+                      <!-- Button -->
+                       <div>
+                        <a href="#" class="px-6 py-3 mt-10 font-semibold text-white border-white bg-mainBlue rounded-lg shadow-md border-2 md:text-base hover:bg-white hover:text-mainBlue hover:border-mainBlue ">Add & install extension</a>   
+                       </div>
+                </div>
+
+                 <!-- Box 2 -->
+                <div class="w-full md:w-1/3">
+                    <div class="flex flex-col w-full py-6 space-y-4 text-center rounded-xl shadow-2xl md:mt-12">
+                    
+                    <!-- Image -->
+                     <div class="flex justify-center">
+                        <img src="src/img/firefox.png" alt="">
+                     </div> 
+                     <!-- Text -->
+                      <h5 class="pt-6 text-xl font-bold">
+                        Add to firefox
+                      </h5>
+                      <p class="text-gray-400">
+                        Minimum version 55
+                      </p>
+                      <!-- Button -->
+                       <div>
+                        <a href="#" class="px-6 py-3 mt-10 font-semibold text-white border-white bg-mainBlue rounded-lg shadow-md border-2 md:text-base hover:bg-white hover:text-mainBlue hover:border-mainBlue ">Add & install extension</a>   
+                        </div>
+                    </div>
+                </div>
+
+                    <!-- Box 3 -->
+                    <div class="w-full md:w-1/3">
+                        <div class="flex flex-col w-full py-6 space-y-4 text-center rounded-xl shadow-2xl md:mt-12">
+                        
+                        <!-- Image -->
+                         <div class="flex justify-center">
+                            <img src="src/img/edge.png" alt="">
+                         </div> 
+                         <!-- Text -->
+                          <h5 class="pt-6 text-xl font-bold">
+                            Add to Edge
+                          </h5>
+                          <p class="text-gray-400">
+                            Minimum version 79
+                          </p>
+                          <!-- Button -->
+                           <div>
+                            <a href="#" class="px-6 py-3 mt-10 font-semibold text-white border-white bg-mainBlue rounded-lg shadow-md border-2 md:text-base hover:bg-white hover:text-mainBlue hover:border-mainBlue ">Add & install extension</a>   
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Heading -->
+     <section id="faq" class="mt-16">
+        <div class="container mx-auto">
+            <h2 class="mb-6 text-3xl font-semibold text-center md:text-4xl">
+                Frequently Asked Questions
+            </h2>
+            <p class="max-w-lg px-6 mx-auto text-center text-grayishBlue">
+                Here are some of our frequently asked questions. If you have any other questions, please feel free to contact us.
+            </p>
+        </div>
+     </section>
+
+    <!-- FAQ Accordion -->
+     <section id="faq-accordion">   
+        <div class="container mx-auto px-6 mb-32">
+            <!-- Accordion container -->
+            <div class="max-w-2xl m-8 mx-auto overflow-hidden">
+                <!-- Tab 1 -->
+                 <div class="py-1 border-b outline-none group" tabindex="1">
+                    <!-- Tab flex container -->
+                     <div class="flex items-center justify-between py-3 text-gray-500 transition duration-500 cursor-pointer group ease">
+                        <!-- Tab title -->
+                         <div class="transition duration-500 ease group-hover:text-red-500">
+                            What is VirtualBoddy and how does it work?
+                         </div>
+                         <!-- Arrow -->
+                          <div class="transition duration-500 ease group-focus:-rotate-180 group-focus:text-red-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                          </div>
+                     </div>
+                     <!-- Tab inner content -->
+                      <div class="overflow-hidden transition duration-500 group-focus:max-h-screen max-h-0 ease">
+                        <p class="py-2 text-justify text-gray-400">
+                            VirtualBoddy is your personal AI assistant designed to help you manage your tasks, schedule, and communications efficiently. It uses advanced AI to understand your needs, offer personalized recommendations, and automate routine activities, freeing up your time for more important tasks.
+                        </p>
+                      </div>
+                 </div>
+                 <!-- Tab 2 -->
+                 <div class="py-1 border-b outline-none group" tabindex="2">
+                    <!-- Tab flex container -->
+                     <div class="flex items-center justify-between py-3 text-gray-500 transition duration-500 cursor-pointer group ease">
+                        <!-- Tab title -->
+                         <div class="transition duration-500 ease group-hover:text-red-500">
+                            How can VirtualBoddy help me stay organized?
+                         </div>
+                         <!-- Arrow -->
+                          <div class="transition duration-500 ease group-focus:-rotate-180 group-focus:text-red-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                          </div>
+                     </div>
+                     <!-- Tab inner content -->
+                      <div class="overflow-hidden transition duration-500 group-focus:max-h-screen max-h-0 ease">
+                        <p class="py-2 text-justify text-gray-400">
+                            VirtualBoddy can assist you in various ways, such as managing your calendar, setting reminders, creating to-do lists, and organizing your emails. By keeping everything in one place and providing timely notifications, it ensures you stay on top of your responsibilities effortlessly.
+                        </p>
+                      </div>
+                 </div>
+                 <!-- Tab 3 -->
+                 <div class="py-1 border-b outline-none group" tabindex="3">
+                    <!-- Tab flex container -->
+                     <div class="flex items-center justify-between py-3 text-gray-500 transition duration-500 cursor-pointer group ease">
+                        <!-- Tab title -->
+                         <div class="transition duration-500 ease group-hover:text-red-500">
+                            Is my data safe with VirtualBoddy?
+                         </div>
+                         <!-- Arrow -->
+                          <div class="transition duration-500 ease group-focus:-rotate-180 group-focus:text-red-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                          </div>
+                     </div>
+                     <!-- Tab inner content -->
+                      <div class="overflow-hidden transition duration-500 group-focus:max-h-screen max-h-0 ease">
+                        <p class="py-2 text-justify text-gray-400">
+                            Absolutely. Your privacy and security are our top priorities. VirtualBoddy uses state-of-the-art encryption and follows strict data protection protocols to ensure that your personal information is always secure.
+                        </p>
+                      </div>
+                 </div>
+                 <!-- Tab 4 -->
+                 <div class="py-1 border-b outline-none group" tabindex="4">
+                    <!-- Tab flex container -->
+                     <div class="flex items-center justify-between py-3 text-gray-500 transition duration-500 cursor-pointer group ease">
+                        <!-- Tab title -->
+                         <div class="transition duration-500 ease group-hover:text-red-500">
+                            Can VirtualBoddy integrate with other apps and services?
+                         </div>
+                         <!-- Arrow -->
+                          <div class="transition duration-500 ease group-focus:-rotate-180 group-focus:text-red-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                          </div>
+                     </div>
+                     <!-- Tab inner content -->
+                      <div class="overflow-hidden transition duration-500 group-focus:max-h-screen max-h-0 ease">
+                        <p class="py-2 text-justify text-gray-400">
+                            Yes, VirtualBoddy is designed to seamlessly integrate with a wide range of popular apps and services, including email clients, calendar applications, and cloud storage solutions. This integration allows you to streamline your workflow and enhance productivity
+                        </p>
+                      </div>
+                 </div>
+                 <!-- Tab 5 -->
+                 <div class="py-1 border-b outline-none group" tabindex="5">
+                    <!-- Tab flex container -->
+                     <div class="flex items-center justify-between py-3 text-gray-500 transition duration-500 cursor-pointer group ease">
+                        <!-- Tab title -->
+                         <div class="transition duration-500 ease group-hover:text-red-500">
+                            How can I customize VirtualBoddy to suit my preferences?
+                         </div>
+                         <!-- Arrow -->
+                          <div class="transition duration-500 ease group-focus:-rotate-180 group-focus:text-red-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                          </div>
+                     </div>
+                     <!-- Tab inner content -->
+                      <div class="overflow-hidden transition duration-500 group-focus:max-h-screen max-h-0 ease">
+                        <p class="py-2 text-justify text-gray-400">
+                            VirtualBoddy offers a high degree of customization to fit your unique needs. You can adjust settings, set preferences for notifications, and personalize the assistant's responses and behavior through an easy-to-use interface. This ensures that VirtualBoddy works exactly the way you want it to.
+                        </p>
+                      </div>
+                 </div>
+            </div>
+        </div>
+     </section>
+
+     <!-- Newsletter section -->
+      <section id="newsletter" class="bg-mainBlue">
+        <!-- Main container  -->
+         <div class="max-w-lg mx-auto py-24">
+            <p class="mb-6 text-lg tracking-widest text-center text-white uppercase">
+              12,000+ already joined  
+            </p>
+            <h2 class="px-3 mb-6 text-3xl font-semibold text-center text-white md:text-4xl">
+                Stay up-to-date with our newsletter 
+            </h2>
+            <!-- Form -->
+             <form action="" class="flex-flex-col items-start justify-center max-w-2xl mx-auto space-y-6 text-base px-6 md:flex-row md:space-x-4 md:space-y-0 md:px-0">
+                <!-- Input & button container -->
+                 <div class="flex flex-col justify-between items-center mx-auto md:flex-row md:mx-0">
+                    <input 
+                    type="text"
+                    class="flex-1 px-6 pt-3 pb-2 mb-4 rounded-lg border-1 border-white focus:outline-none md:mr-3 md:mb-0"
+                    placeholder="Enter your email address"
+                    />
+
+                    <input 
+                    type="text"
+                    class="inline-flex px-6 py-3 font-semibold text-center text-white duration-200 transform rounded-lg cursor-pointer focus:outline-none bg-softRed hover:opacity-90"
+                    value="Contact us"
+                    />
+                 </div>
+             </form>
+         </div>
+      </section>
+
+      <!-- Footer -->
+       <footer class="py-16 bg-veryDarkBlue">
+        <!-- Footer container -->
+         <div class="container flex flex-col items-center justify-between mx-auto space-y-16 px-6 md:flex-row md:space-y-0">
+            <!-- Logo/Menu container -->
+             <div class="flex flex-col items-center justify-between space-y-8 text-lg font-light md:flex-row md:space-x-14 text-grayishBlue">
+                <img src="src/img/rmLogo.png" alt="" class="w-32 mb-1">
+                <a href="#features" class="uppercase hover:text-softRed">Features</a>
+                <a href="#download" class="uppercase hover:text-softRed">Download</a>
+                <a href="#faq" class="uppercase hover:text-softRed">FAQ</a>
+             </div>
+             <!-- Social container -->
+              <div class="flex space-x-10">
+                <a href=""><img src="src/icons/facebook.svg" alt="" class="h-6 ficon"></a>
+                <a href=""><img src="src/icons/twitter.svg" alt="" class="h-6 ficon"></a>
+
+              </div>
+         </div>
+       </footer>
+    
+</body>
+</html>
