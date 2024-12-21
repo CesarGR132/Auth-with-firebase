@@ -5,9 +5,7 @@ const menu = document.getElementById('menu');
 const logo = document.getElementById('logo');
 
 
-
 //Tabs menu event listener
-
 tabs.forEach((tab) => tab.addEventListener('click', onTabClick));
 
 //Hambuger button listener
@@ -28,8 +26,8 @@ function onTabClick(e) {
     })
 
     // Activate a new tab and panel based on the target
-    e.target.classList.add('border-softRed', 'border-b-4');
-    const classString = e.target.getAttribute('data-target');z
+    e.currentTarget.children[0].classList.add('border-softRed', 'border-b-4');
+    const classString = e.currentTarget.getAttribute('data-target');
     document.getElementById('panels')
         .getElementsByClassName(classString)[0] 
         .classList.remove('hidden');
