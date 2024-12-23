@@ -1,11 +1,38 @@
-import crypto from './node_modules/crypto-js'
+import 
+import bcrypt from 'bcrypt'
+import { createUserWithEmailAndPassword, signInWithCredential } from 'firebase/auth';
+import { auth, SALT_ROUNDS } from './config.js'
 
 export class UserRepository {
-  static async register (username, password) {
+  static async register ( username, password) {
     Validation.username(username)
     Validation.password(password)
-    
-    
+
+    const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS)
+
+    try {
+      await createUserWithEmailAndPassword(auth, username, password)
+      return true
+    } catch (error) {
+      if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
+        return false
+      } else {
+        throw error
+      }
+    }
+  }
+
+  static async userExist (email, password) {
+    try {
+      await signInWithCredential(auth, email, password)
+      return true
+    } catch (error) {
+      if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
+        return false
+      } else {
+        throw error
+      }
+    }
   }
 }
 
