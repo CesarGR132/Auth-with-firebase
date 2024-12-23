@@ -1,0 +1,8 @@
+# Environment data
+config.js
+
+# Node modules
+node_modules/
+
+# Firebase
+js/api/firebase/firebaseauth.js
