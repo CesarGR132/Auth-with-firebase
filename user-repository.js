@@ -1,20 +1,16 @@
-import 
-import bcrypt from 'bcrypt'
-import { createUserWithEmailAndPassword, signInWithCredential } from 'firebase/auth';
-import { auth, SALT_ROUNDS } from './config.js'
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
+import { auth } from './config.js'
 
 export class UserRepository {
-  static async register ( username, password) {
-    Validation.username(username)
+  static async register (email, password) {
+    Validation.email(email)
     Validation.password(password)
 
-    const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS)
-
     try {
-      await createUserWithEmailAndPassword(auth, username, password)
+      await createUserWithEmailAndPassword(auth, email, password)
       return true
     } catch (error) {
-      if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
+      if (error.code === 'auth/email-already-in-use') {
         return false
       } else {
         throw error
@@ -22,10 +18,17 @@ export class UserRepository {
     }
   }
 
-  static async userExist (email, password) {
+  static async login (email, password) {
     try {
-      await signInWithCredential(auth, email, password)
-      return true
+      const userCredential = await signInWithEmailAndPassword(auth, email, password)
+      const user = userCredential.user
+
+      if (user !== null) {
+        const { password: _, ...publicUser } = user
+        return publicUser
+      } else {
+        return false
+      }
     } catch (error) {
       if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
         return false
@@ -37,13 +40,11 @@ export class UserRepository {
 }
 
 class Validation {
-  static username (username) {
-    if (typeof username !== 'string') throw new Error('Username must be a string')
-    if (username.length < 6) throw new Error('Username must be at least 6 characters long')
-    if (username.length > 20) throw new Error('Username must be at most 20 characters long')
-    if (!/^[a-zA-Z0-9_]+$/.test(username)) throw new Error('Username must only contain letters, numbers, and underscores')
-    if (/^_/.test(username)) throw new Error('Username must not start with an underscore')
-    if (/_$/.test(username)) throw new Error('Username must not end with an underscore')
+  static email (email) {
+    if (typeof email !== 'string') throw new Error('Email must be a string')
+    if (email.length < 6) throw new Error('Email must be at least 6 characters long')
+    if (email.length > 50) throw new Error('Email must be at most 50 characters long')
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) throw new Error('Email must be a valid email address')
   }
 
   static password (password) {

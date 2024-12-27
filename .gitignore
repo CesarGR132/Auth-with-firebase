@@ -6,3 +6,6 @@ node_modules/
 
 # Firebase
 js/api/firebase/firebaseauth.js
+
+# Private folder
+private/

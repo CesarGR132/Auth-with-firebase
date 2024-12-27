@@ -6,7 +6,8 @@
   "scripts": {
     "build": "tailwindcss -i ./input.css -o ./css/style.css",
     "watch": "tailwindcss -i ./input.css -o ./css/style.css --watch",
-    "dev": "node --watch index.js"
+    "dev": "node --watch index.js",
+    "lint": "eslint ."
   },
   "keywords": [],
   "author": "",
@@ -23,7 +24,8 @@
     "dotenv": "^16.4.7",
     "ejs": "^3.1.10",
     "express": "^4.21.2",
-    "firebase": "^11.1.0"
+    "firebase": "^11.1.0",
+    "firebase-admin": "^13.0.2"
   },
   "eslintConfig": {
     "extends": "standard"

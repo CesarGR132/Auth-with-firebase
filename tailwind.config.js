@@ -6,21 +6,20 @@ module.exports = {
       sm: '480px',
       md: '768px',
       lg: '1020px',
-      xl: '1440px',
+      xl: '1440px'
     },
     extend: {
-      colors : {
-        softBlue : 'hsl(231, 69%, 60%)',
+      colors: {
+        softBlue: 'hsl(231, 69%, 60%)',
         mainBlue: '#006baf',
-        softRed : 'hsl(0, 94%, 66%)',
-        grayishBlue : 'hsl(229, 6%, 60%)',
-        veryDarkBlue : 'hsl(229, 31%, 21%)',
+        softRed: 'hsl(0, 94%, 66%)',
+        grayishBlue: 'hsl(229, 6%, 60%)',
+        veryDarkBlue: 'hsl(229, 31%, 21%)'
       },
       fontFamily: {
-        sans: ['Rubik' , 'sans-serif'],
-      },
-    },
+        sans: ['Rubik', 'sans-serif']
+      }
+    }
   },
-  plugins: [],
+  plugins: []
 }
-
