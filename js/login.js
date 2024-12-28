@@ -15,14 +15,14 @@ signInButton.addEventListener('click', function () {
 
 const $ = (el) => document.querySelector(el)
 const loginForm = $('#loginForm')
-const loginSpan = $('#loginForm span')
+const loginSpan = $('#loginForm span') || { innerText: '', style: {} }
 
 loginForm?.addEventListener('submit', async (e) => {
   e.preventDefault()
   const email = $('#email').value
   const password = $('#password').value
 
-  fetch('login', {
+  fetch('http://localhost:3000/login', { // Ensure the correct URL
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -30,15 +30,24 @@ loginForm?.addEventListener('submit', async (e) => {
     body: JSON.stringify({ email, password })
   })
     .then((res) => {
+      console.log('Status:', res.status)
       if (res.ok) {
-        loginSpan.innerText = 'Login successful redirecting...'
-        loginSpan.style.color = 'red'
-        setTimeout(() => {
-          window.location.href = '/protected'
-        }, 2000)
+        return res.json()
       } else {
-        loginSpan.innerText = 'Invalid credentials'
-        loginSpan.style.color = 'red'
+        throw new Error('Invalid credentials')
       }
+    })
+    .then((data) => {
+      console.log('Login successful:', data)
+      loginSpan.innerText = 'Login successful, redirecting...'
+      loginSpan.style.color = 'green'
+      setTimeout(() => {
+        window.location.href = '/protected'
+      }, 2000)
+    })
+    .catch((error) => {
+      console.error('Login error:', error)
+      loginSpan.innerText = error.message
+      loginSpan.style.color = 'red'
     })
 })

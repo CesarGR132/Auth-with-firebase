@@ -1,4 +1,5 @@
 import express from 'express'
+import cors from 'cors'
 import { PORT, FIREBASE_API_KEY } from './config.js'
 import { UserRepository } from './user-repository.js'
 import cookieParser from 'cookie-parser'
@@ -7,6 +8,8 @@ import { auth } from './admin.js'
 const app = express()
 
 app.set('view engine', 'html')
+
+app.use(cors())
 
 app.use(express.json())
 app.use(cookieParser())
@@ -38,15 +41,13 @@ app.post('/login', async (req, res) => {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
         sameSite: 'strict',
-        path: '/',
-        maxAge: 1000 * 60 * 60
+        maxAge: 1000 * 60 * 60 // 1 hour
       })
       res.cookie('refresh_token', tokens.refreshToken, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
         sameSite: 'strict',
-        path: '/',
-        maxAge: 1000 * 60 * 60 * 24 * 30
+        maxAge: 1000 * 60 * 60 * 24 * 30 // 30 days
       })
       res.status(200).json({ accessToken: tokens.accessToken })
     } else {
