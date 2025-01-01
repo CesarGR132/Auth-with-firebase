@@ -1,15 +1,27 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
-import { auth } from './config.js'
+import { auth, getFS, SD, DC } from './config.js'
 
 export class UserRepository {
-  static async register (email, password) {
+  static async register (firstName, lastName, email, password) {
+    Validation.firstName(firstName)
+    Validation.lastName(lastName)
     Validation.email(email)
     Validation.password(password)
 
     try {
-      await createUserWithEmailAndPassword(auth, email, password)
-      return true
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password)
+      const user = userCredential.user
+      const UserData = {
+        email,
+        firstName,
+        lastName
+      }
+      const docRef = DC(getFS, 'users', user.uid)
+      await SD(docRef, UserData)
+      const { password: _, ...publicUser } = user
+      return publicUser
     } catch (error) {
+      console.error('Error during registration:', error)
       if (error.code === 'auth/email-already-in-use') {
         return false
       } else {
@@ -59,5 +71,19 @@ class Validation {
     if (/_$/.test(password)) throw new Error('Password must not end with an underscore')
     if (/^\d+$/.test(password)) throw new Error('Password must not be entirely numeric')
     if (/^[a-zA-Z]+$/.test(password)) throw new Error('Password must not be entirely alphabetic')
+  }
+
+  static firstName (firstName) {
+    if (typeof firstName !== 'string') throw new Error('First name must be a string')
+    if (firstName.length < 2) throw new Error('First name must be at least 2 characters long')
+    if (firstName.length > 50) throw new Error('First name must be at most 50 characters long')
+    if (!/^[a-zA-Z]+$/.test(firstName)) throw new Error('First name must contain only alphabetic characters')
+  }
+
+  static lastName (lastName) {
+    if (typeof lastName !== 'string') throw new Error('Last name must be a string')
+    if (lastName.length < 2) throw new Error('Last name must be at least 2 characters long')
+    if (lastName.length > 50) throw new Error('Last name must be at most 50 characters long')
+    if (!/^[a-zA-Z]+$/.test(lastName)) throw new Error('Last name must contain only alphabetic characters')
   }
 }

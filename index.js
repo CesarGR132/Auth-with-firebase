@@ -41,13 +41,13 @@ app.post('/login', async (req, res) => {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
         sameSite: 'strict',
-        maxAge: 1000 * 60 * 60 // 1 hour
+        maxAge: 1000 * 60 * 60
       })
       res.cookie('refresh_token', tokens.refreshToken, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
         sameSite: 'strict',
-        maxAge: 1000 * 60 * 60 * 24 * 30 // 30 days
+        maxAge: 1000 * 60 * 60 * 24 * 30
       })
       res.status(200).json({ accessToken: tokens.accessToken })
     } else {
@@ -59,18 +59,18 @@ app.post('/login', async (req, res) => {
 })
 
 app.post('/register', async (req, res) => {
-  const { email, password } = req.body
+  const { firstName, lastName, email, password } = req.body
 
   try {
-    const success = await UserRepository.register(email, password)
+    const success = await UserRepository.register(firstName, lastName, email, password)
     if (success) {
-      res.status(201).send('User registered successfully')
+      res.status(201).json({ message: 'User registered successfully' })
     } else {
-      res.status(400).send('User already exists')
+      res.status(400).json({ message: 'User already exists' })
     }
   } catch (error) {
-    console.error(error)
-    res.status(500).send(error.message)
+    console.error('Registration error:', error)
+    res.status(500).json({ message: error.message })
   }
 })
 
