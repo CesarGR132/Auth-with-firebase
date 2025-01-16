@@ -43,7 +43,7 @@ loginForm?.addEventListener('submit', async (e) => {
       loginSpan.innerText = 'Login successful, redirecting...'
       loginSpan.style.color = 'green'
       setTimeout(() => {
-        window.location.href = '/protected'
+        window.location.href = 'http://localhost:3000/protected'
       }, 2000)
     })
     .catch((error) => {
@@ -85,7 +85,7 @@ registerForm?.addEventListener('submit', async (e) => {
       registerSpan.innerText = 'Registration successful, redirecting...'
       registerSpan.style.color = 'green'
       setTimeout(() => {
-        window.location.href = '/protected'
+        window.location.href = 'http://localhost:3000/protected'
       }, 2000)
     })
     .catch((error) => {

@@ -9,3 +9,5 @@ js/api/firebase/firebaseauth.js
 
 # Private folder
 private/
+
+js/api/face_recognition

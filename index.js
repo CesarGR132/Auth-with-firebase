@@ -29,7 +29,11 @@ app.use((req, res, next) => {
 })
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  if (req.session.user) {
+    res.redirect('http://192.168.1.76:8080/')
+  } else {
+    res.redirect('/views/login.html')
+  }
 })
 
 app.post('/login', async (req, res) => {
@@ -81,13 +85,14 @@ app.post('/logout', (req, res) => {
 })
 
 app.get('/protected', (req, res) => {
-  res.send('Protected endpoint')
+  res.redirect('http://192.168.1.76:8080/')
 })
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`)
 })
 
+// Methods to verify and refresh tokens
 app.post('/refresh-token', async (req, res) => {
   const refreshToken = req.cookies.refresh_token
   if (!refreshToken) {
